@@ -1,6 +1,6 @@
 using UnityEngine;
 
-public partial class Player : MonoBehaviour
+public partial class Player : MonoBehaviour // partial classes allow for classes (and scripts) to be split up while still being referred to as the same class. this is purely for organisation
 {
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
