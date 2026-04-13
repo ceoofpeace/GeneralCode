@@ -11,6 +11,11 @@ public partial class Player : MonoBehaviour // partial classes allow for classes
     // Update is called once per frame
     void Update()
     {
+        
+    }
+
+    void FixedUpdate() //called 1000 times per frame
+    {
         HandleMovement();
     }
 }
