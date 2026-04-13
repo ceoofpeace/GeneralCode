@@ -5,7 +5,7 @@ public partial class Player : MonoBehaviour // partial classes allow for classes
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
-        
+        InitializeMovement();
     }
 
     // Update is called once per frame
