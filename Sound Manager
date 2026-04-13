@@ -1,0 +1,47 @@
+using System;
+using System.Collections.Generic;
+using UnityEngine;
+
+public class SoundManager : MonoBehaviour
+{
+    private AudioSource mainAudioSource;
+    [Serializable]
+    public struct audioClipStruct
+    {
+        public string name;
+        public AudioClip clip;
+    }
+    public audioClipStruct[] audioClips;
+    private Dictionary<string,AudioClip> audioClipHashMap = new Dictionary<string,AudioClip>();
+
+    public static SoundManager instance;
+    void Start()
+    {
+        instance = this;   
+        mainAudioSource = GetComponent<AudioSource>();
+        foreach(audioClipStruct clipStruct in audioClips)
+        {
+            audioClipHashMap.Add(clipStruct.name,clipStruct.clip);
+        }
+    }
+
+    public void PlayerAudioClipOneShot(string audioClipName)
+    {
+        mainAudioSource.PlayOneShot(audioClipHashMap[audioClipName]);
+    }
+
+
+    public void PlayLoopingClip(string audioClipName)
+    {
+        mainAudioSource.clip = audioClipHashMap[audioClipName];
+        mainAudioSource.loop = true;
+        mainAudioSource.Play();
+    }
+
+    public void StopClip()
+    {
+        mainAudioSource.clip = null;
+    }
+
+    
+}
